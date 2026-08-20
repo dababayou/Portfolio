@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Summary — Bayu Nismara Nagatama</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    @page {
+      size: A4;
+      margin: 12mm 12mm 12mm 12mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #0f172a;
+      background: #ffffff;
+      line-height: 1.4;
+      font-size: 11px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 4px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #ffffff;
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-info h1 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .header-info .subtitle {
+      font-size: 12px;
+      font-weight: 600;
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    .header-info .portfolio-url {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #7dd3fc;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 11px;
+      text-decoration: none;
+    }
+
+    .contact-pills {
+      text-align: right;
+      font-size: 10px;
+      color: #94a3b8;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-pills a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-pills a:hover {
+      color: #38bdf8;
+    }
+
+    /* Sections */
+    .section-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #0f172a;
+      border-bottom: 2px solid #0284c7;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-title span.badge {
+      font-size: 9px;
+      font-weight: 700;
+      color: #0284c7;
+      background: #e0f2fe;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: none;
+    }
+
+    /* Grid layout */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .project-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 12px;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card.featured {
+      border-color: #cbd5e1;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .project-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .project-tag {
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #0369a1;
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .project-subtitle {
+      font-size: 10px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 9.5px;
+      color: #334155;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 6px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 9px;
+    }
+
+    .tech-stack {
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .live-link {
+      font-weight: 700;
+      color: #0284c7;
+      text-decoration: none;
+    }
+
+    .live-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills Box */
+    .skills-box {
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    .skill-group h4 {
+      font-size: 10px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .skill-group p {
+      font-size: 9.5px;
+      color: #475569;
+      line-height: 1.3;
+    }
+
+    /* Call To Action Box */
+    .cta-banner {
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: 10px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cta-text h3 {
+      font-size: 12px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 2px;
+    }
+
+    .cta-text p {
+      font-size: 10px;
+      color: #94a3b8;
+    }
+
+    .cta-button {
+      background: #0284c7;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 10px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .container {
+        padding: 0;
+      }
+      header {
+        background: #0f172a !important;
+        -webkit-print-color-adjust: exact;
+      }
+      .cta-banner {
+        background: #0f172a !important;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header>
+      <div class="header-info">
+        <h1>BAYU NISMARA NAGATAMA</h1>
+        <div class="subtitle">Front-End Web Engineer & Informatics Student @ ITS Surabaya (GPA 3.68)</div>
+        <a href="https://dababayou.github.io/Portfolio/" class="portfolio-url" target="_blank">
+          🌐 Live Web Portfolio: https://dababayou.github.io/Portfolio/
+        </a>
+      </div>
+      <div class="contact-pills">
+        <div>Email: <a href="mailto:bayunismara@gmail.com">bayunismara@gmail.com</a></div>
+        <div>Phone/WA: <a href="https://wa.me/628887083077">+62 888-7083-077</a></div>
+        <div>GitHub: <a href="https://github.com/dababayou">github.com/dababayou</a></div>
+        <div>LinkedIn: <a href="https://linkedin.com/in/bayu-nismara-nagatama">in/bayu-nismara-nagatama</a></div>
+      </div>
+    </header>
+
+    <!-- SECTION: FEATURED PROJECTS -->
+    <div class="section-title">
+      PROJECT PORTFOLIO SHOWCASE
+      <span class="badge">Click any project title or link for live demo</span>
+    </div>
+
+    <div class="project-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card featured">
+        <div>
+          <div class="project-header">
+            <span class="project-title">PLN LegalBot AI</span>
+            <span class="project-tag">BUMN Enterprise</span>
+          </div>
+          <div class="project-subtitle">AI Legal Document Intelligence Platform</div>
+          <div class="project-desc">
+            Production web application for PT PLN (Persero) converting 500+ page regulations into instant structured answers. Built responsive React interface, JWT proxy layer, and live streaming response components.
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="tech-stack">React, Vite, Tailwind CSS, REST API</span>
+          <a href="https://pln-ai.vercel.app/legal" class="live-link" target="_blank">Live Demo ↗</a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card featured">
+        <div>
+          <div class="project-header">
+            <span class="project-title">TENUNA: The Living Threads</span>
+            <span class="project-tag">BytesFest Winner</span>
+          </div>
+          <div class="project-subtitle">Interactive WebGL Editorial Documentary</div>
+          <div class="project-desc">
+            Cultural editorial web documentary celebrating Sumba Ikat weaving heritage (SDG 11). Engineered using React 19, GSAP ScrollTrigger timeline animations, and a 3D WebGL (OGL) circular gallery.
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="tech-stack">React 19, GSAP, 3D WebGL (OGL)</span>
+          <a href="https://dababayou.github.io/The-Living-Threads/" class="live-link" target="_blank">Live App ↗</a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div>
+          <div class="project-header">
+            <span class="project-title">NutriWise</span>
+            <span class="project-tag">1st Place TIC 9.0</span>
+          </div>
+          <div class="project-subtitle">Interactive Digital Nutrition Assistant</div>
+          <div class="project-desc">
+            National champion web platform featuring BMI/caloric calculators, NCD risk quiz, and Myth vs Fact education module aligned with SDG 3. Engineered hybrid Supabase & LocalStorage deep-merge data layer.
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="tech-stack">React, Supabase, LocalStorage</span>
+          <a href="https://nutriwise-rose.vercel.app/" class="live-link" target="_blank">Live App ↗</a>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card">
+        <div>
+          <div class="project-header">
+            <span class="project-title">PharmaCare+</span>
+            <span class="project-tag">INOVBOYO '25 Award</span>
+          </div>
+          <div class="project-subtitle">AI Elderly Medication Management Platform</div>
+          <div class="project-desc">
+            Regional innovation award-winning healthcare web app assisting elderly patients & caregivers with automated pill reminders, dangerous drug-interaction detection, and online pharmacy consultation.
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="tech-stack">React, AI Engine, Tailwind CSS</span>
+          <a href="https://pharmacare-gericommunity.lovable.app" class="live-link" target="_blank">Live App ↗</a>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card">
+        <div>
+          <div class="project-header">
+            <span class="project-title">SkillBridge SEVIMA</span>
+            <span class="project-tag">Industry Capstone</span>
+          </div>
+          <div class="project-subtitle">Career Matching & Gap Analyzer Platform</div>
+          <div class="project-desc">
+            Capstone platform in collaboration with PT SEVIMA parsing CVs via Claude Sonnet 4.6, analyzing competency gaps against 5 IT roles, and serving MCQ skill verification with interactive radar charts.
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="tech-stack">Laravel 12, Tailwind v4, FastAPI</span>
+          <a href="https://dababayou.github.io/Portfolio/" class="live-link" target="_blank">View Details ↗</a>
+        </div>
+      </div>
+
+      <!-- Project 6 -->
+      <div class="project-card">
+        <div>
+          <div class="project-header">
+            <span class="project-title">SyncRoutine & LearnVid AI</span>
+            <span class="project-tag">Full-Stack & AI</span>
+          </div>
+          <div class="project-subtitle">Collaborative Routine Tracker & AI Video Chatbot</div>
+          <div class="project-desc">
+            SyncRoutine: Multi-user routine tracker with room lobbies (MongoDB, ES6+). LearnVid AI: Conversational AI platform turning user topic prompts into structured educational videos (Python, AI Pipelines).
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="tech-stack">JavaScript, Node.js, Python, MongoDB</span>
+          <a href="https://dababayou.github.io/Portfolio/" class="live-link" target="_blank">View Details ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CORE SKILLS SUMMARY -->
+    <div class="section-title">
+      TECHNICAL SKILLS & COMPETENCIES
+    </div>
+
+    <div class="skills-box">
+      <div class="skill-group">
+        <h4>Front-End Engineering</h4>
+        <p>React.js, TypeScript, Next.js, HTML5/CSS3, Tailwind CSS, Vite, State Management, Responsive Design</p>
+      </div>
+      <div class="skill-group">
+        <h4>Frameworks & Backend</h4>
+        <p>Laravel 12, Node.js, Express.js, RESTful APIs, JWT Auth, Python, FastAPI, MongoDB, Supabase</p>
+      </div>
+      <div class="skill-group">
+        <h4>Tools & Best Practices</h4>
+        <p>Git/GitHub, VS Code, Agile/Scrum, WebGL (OGL), GSAP Animations, UI/UX Prototyping</p>
+      </div>
+    </div>
+
+    <!-- CALL TO ACTION BANNER -->
+    <div class="cta-banner">
+      <div class="cta-text">
+        <h3>EXPLORE FULL INTERACTIVE PORTFOLIO & CODE REPOSITORIES</h3>
+        <p>Visit the interactive live site to view animations, source code, and full project breakdowns.</p>
+      </div>
+      <a href="https://dababayou.github.io/Portfolio/" class="cta-button" target="_blank">
+        OPEN WEB PORTFOLIO ↗
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
