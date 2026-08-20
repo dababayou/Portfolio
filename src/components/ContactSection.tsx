@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Github, Copy, Check, Download, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Copy, Check, Download, ArrowUpRight, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -159,17 +159,17 @@ export const ContactSection: React.FC<ContactProps> = ({ lang }) => {
 
         </div>
 
-        {/* Download Resume Banner CTA */}
+        {/* Download Resume & Portfolio Banner CTA */}
         <div className="mt-10 p-8 rounded-3xl bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-purple-500/10 border border-cyan-500/20 text-center space-y-4">
           <h3 className="text-xl font-bold text-white">
-            {lang === 'en' ? 'Need an Updated Resume?' : 'Butuh Resume Terupdate?'}
+            {lang === 'en' ? 'Need Application Documents?' : 'Butuh Dokumen Lamaran Kerja?'}
           </h3>
           <p className="text-slate-300 text-xs sm:text-sm max-w-xl mx-auto">
             {lang === 'en'
-              ? 'Download the official CV (v6) containing full professional background, project achievements, and academic record.'
-              : 'Unduh CV resmi (v6) berisi riwayat profesional lengkap, pencapaian proyek, dan catatan akademik.'}
+              ? 'Download the official CV or open the print-ready 1-page visual Portfolio Document PDF for job application portals.'
+              : 'Unduh CV resmi atau buka Dokumen Portofolio 1-halaman (PDF) yang siap cetak untuk portal lamaran kerja.'}
           </p>
-          <div>
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
             <a
               href={PERSONAL_INFO.cvPath}
               download="CV_Bayu_Nismara_Nagatama.pdf"
@@ -178,6 +178,16 @@ export const ContactSection: React.FC<ContactProps> = ({ lang }) => {
             >
               <Download className="w-4 h-4" />
               <span>{lang === 'en' ? 'Download Official CV' : 'Unduh CV Resmi'}</span>
+            </a>
+
+            <a
+              href={PERSONAL_INFO.portfolioDocPath}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-purple-500/40 hover:border-purple-500 text-purple-300 hover:text-white font-bold text-xs shadow-md transition-all transform hover:-translate-y-0.5 cursor-pointer"
+            >
+              <FileText className="w-4 h-4 text-purple-400" />
+              <span>{lang === 'en' ? 'Portfolio Document (PDF)' : 'Dokumen Portofolio (PDF)'}</span>
             </a>
           </div>
         </div>

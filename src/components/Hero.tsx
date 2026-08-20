@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Download, Sparkles, Code2, Cpu, Award, GraduationCap, CheckCircle2, Linkedin, Github, Mail } from 'lucide-react';
+import { ArrowRight, Download, Sparkles, Code2, Cpu, Award, GraduationCap, CheckCircle2, Linkedin, Github, Mail, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -100,6 +100,16 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
               >
                 <Download className="w-4 h-4 text-cyan-400" />
                 <span>{lang === 'en' ? 'Download Official CV' : 'Unduh CV Resmi'}</span>
+              </a>
+
+              <a
+                href={PERSONAL_INFO.portfolioDocPath}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900/80 border border-purple-500/40 hover:border-purple-500 text-purple-300 hover:text-white font-semibold text-sm cursor-pointer transition-all shadow-md"
+              >
+                <FileText className="w-4 h-4 text-purple-400" />
+                <span>{lang === 'en' ? 'Portfolio Document (PDF)' : 'Dokumen Portofolio (PDF)'}</span>
               </a>
 
               <a

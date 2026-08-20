@@ -78,6 +78,7 @@ export const PERSONAL_INFO = {
   linkedin: 'https://linkedin.com/in/bayu-nismara-nagatama-836b77288',
   github: 'https://github.com/dababayou',
   cvPath: `${import.meta.env.BASE_URL}CV_Bayu_Nismara_Nagatama.pdf`,
+  portfolioDocPath: `${import.meta.env.BASE_URL}portfolio_doc.html`,
   bio: {
     en: 'Motivated and detail-oriented Informatics Engineering student at ITS Surabaya (7th Semester, GPA 3.68/4.00) specializing in Front-End Web Development. Professional experience at PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) and Roundbytes agency, alongside AI medical imaging research (YOLO CBCT) and award-winning web innovation (1st Place TIC 9.0, 2nd Runner-Up INOVBOYO 2025).',
     id: 'Mahasiswa Teknik Informatika ITS Surabaya (Semester 7, IPK 3.68/4.00) yang berfokus pada Pengembang Web Front-End. Berpengalaman profesional di PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) dan agensi Roundbytes, serta aktif dalam riset AI medis (YOLO CBCT) dan kompetisi inovasi web berprestasi (Juara 1 TIC 9.0, Juara Harapan 2 INOVBOYO 2025).'

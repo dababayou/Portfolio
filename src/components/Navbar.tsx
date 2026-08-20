@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Download, Globe, Menu, X, Sparkles, Send, Briefcase } from 'lucide-react';
+import { Download, Globe, Menu, X, Sparkles, Send, Briefcase, FileText } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
@@ -98,6 +98,18 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang }) => {
           >
             <Download className="w-4 h-4" />
             <span>{lang === 'en' ? 'Download CV' : 'Unduh CV'}</span>
+          </a>
+
+          {/* Portfolio Doc CTA */}
+          <a
+            href={PERSONAL_INFO.portfolioDocPath}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 border border-purple-500/40 hover:border-purple-500 text-purple-300 hover:text-white font-semibold text-xs transition-all shadow-md"
+            title="View / Save Portfolio Document PDF"
+          >
+            <FileText className="w-3.5 h-3.5 text-purple-400" />
+            <span>{lang === 'en' ? 'Portfolio Doc' : 'Dokumen Porto'}</span>
           </a>
         </div>
 
