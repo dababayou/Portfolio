@@ -42,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
             {/* Status / Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyan-300 text-xs font-medium shadow-inner shadow-cyan-500/10">
               <GraduationCap className="w-4 h-4 text-cyan-400" />
-              <span>{lang === 'en' ? 'ITS Informatics Engineering • GPA 3.64 / 4.00' : 'Teknik Informatika ITS • IPK 3.64 / 4.00'}</span>
+              <span>{lang === 'en' ? 'ITS Informatics Engineering • GPA 3.68 / 4.00' : 'Teknik Informatika ITS • IPK 3.68 / 4.00'}</span>
             </div>
 
             {/* Headline */}
@@ -63,22 +63,22 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
             </p>
 
             {/* Key Metric Highlights Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-              <div className="p-3.5 rounded-2xl glass-panel border border-slate-800">
-                <div className="text-2xl font-black text-cyan-400">PLN & Roundbytes</div>
-                <div className="text-xs text-slate-400 font-medium">{lang === 'en' ? 'Industry Experience' : 'Pengalaman Kerja'}</div>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-2">
+              <div className="p-4 rounded-2xl glass-panel border border-slate-800 flex flex-col justify-between h-full hover:border-cyan-500/30 transition-all shadow-sm">
+                <div className="text-base sm:text-lg font-black text-cyan-400 truncate">PLN & Agency</div>
+                <div className="text-xs text-slate-400 font-medium truncate mt-1">{lang === 'en' ? 'Work Experience' : 'Pengalaman Kerja'}</div>
               </div>
-              <div className="p-3.5 rounded-2xl glass-panel border border-slate-800">
-                <div className="text-2xl font-black text-indigo-400">3.68</div>
-                <div className="text-xs text-slate-400 font-medium">{lang === 'en' ? 'GPA at ITS Surabaya' : 'IPK Teknik Informatika'}</div>
+              <div className="p-4 rounded-2xl glass-panel border border-slate-800 flex flex-col justify-between h-full hover:border-indigo-500/30 transition-all shadow-sm">
+                <div className="text-base sm:text-lg font-black text-indigo-400 truncate">3.68 / 4.00</div>
+                <div className="text-xs text-slate-400 font-medium truncate mt-1">{lang === 'en' ? 'ITS Surabaya GPA' : 'IPK Teknik Informatika'}</div>
               </div>
-              <div className="p-3.5 rounded-2xl glass-panel border border-slate-800">
-                <div className="text-2xl font-black text-amber-400">INOVBOYO '25</div>
-                <div className="text-xs text-slate-400 font-medium">{lang === 'en' ? '2nd Runner-Up Award' : 'Juara Harapan 2 Regional'}</div>
+              <div className="p-4 rounded-2xl glass-panel border border-slate-800 flex flex-col justify-between h-full hover:border-amber-500/30 transition-all shadow-sm">
+                <div className="text-base sm:text-lg font-black text-amber-400 truncate">INOVBOYO '25</div>
+                <div className="text-xs text-slate-400 font-medium truncate mt-1">{lang === 'en' ? '2nd Runner-Up' : 'Juara Harapan 2'}</div>
               </div>
-              <div className="p-3.5 rounded-2xl glass-panel border border-slate-800">
-                <div className="text-2xl font-black text-emerald-400">1st TIC 9.0</div>
-                <div className="text-xs text-slate-400 font-medium">{lang === 'en' ? 'National Web Champion' : 'Juara 1 Web Nasional'}</div>
+              <div className="p-4 rounded-2xl glass-panel border border-slate-800 flex flex-col justify-between h-full hover:border-emerald-500/30 transition-all shadow-sm">
+                <div className="text-base sm:text-lg font-black text-emerald-400 truncate">1st TIC 9.0</div>
+                <div className="text-xs text-slate-400 font-medium truncate mt-1">{lang === 'en' ? 'National Champion' : 'Juara 1 Web Nasional'}</div>
               </div>
             </div>
 
@@ -169,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
                     <span className="text-indigo-300">education</span>: <span className="text-emerald-300">'Informatics @ ITS Surabaya'</span>,
                   </div>
                   <div className="pl-4">
-                    <span className="text-indigo-300">gpa</span>: <span className="text-amber-400">3.64</span>,
+                    <span className="text-indigo-300">gpa</span>: <span className="text-amber-400">3.68</span>,
                   </div>
                   <div className="pl-4">
                     <span className="text-indigo-300">currentRole</span>: <span className="text-emerald-300">'Front-End Dev @ PLN Group'</span>,

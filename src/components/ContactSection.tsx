@@ -135,25 +135,25 @@ export const ContactSection: React.FC<ContactProps> = ({ lang }) => {
             </a>
           </div>
 
-          {/* Location & GitHub Card */}
+          {/* GitHub Profile Card */}
           <div className="glass-panel p-6 rounded-3xl border border-slate-800 flex items-center justify-between hover:border-purple-500/30 transition-all">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center border border-purple-500/20 shrink-0">
-                <MapPin className="w-6 h-6" />
+                <Github className="w-6 h-6" />
               </div>
               <div className="space-y-0.5">
-                <h3 className="text-xs font-bold text-slate-400 uppercase">{lang === 'en' ? 'Location' : 'Lokasi'}</h3>
-                <p className="text-sm font-bold text-white">{PERSONAL_INFO.location}</p>
+                <h3 className="text-xs font-bold text-slate-400 uppercase">GitHub Profile</h3>
+                <p className="text-sm font-bold text-white">dababayou</p>
               </div>
             </div>
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-700 flex items-center gap-1 shrink-0 ml-2"
+              className="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-md shadow-purple-500/20 flex items-center gap-1 shrink-0 ml-2"
             >
-              <Github className="w-4 h-4" />
-              <span>GitHub</span>
+              <span>Explore</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
@@ -177,7 +177,7 @@ export const ContactSection: React.FC<ContactProps> = ({ lang }) => {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 cursor-pointer"
             >
               <Download className="w-4 h-4" />
-              <span>{lang === 'en' ? 'Download Official CV (v6)' : 'Unduh CV Resmi (v6)'}</span>
+              <span>{lang === 'en' ? 'Download Official CV' : 'Unduh CV Resmi'}</span>
             </a>
           </div>
         </div>

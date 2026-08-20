@@ -204,7 +204,7 @@ export const PROJECTS: Project[] = [
     title: 'TENUNA: The Living Threads',
     subtitle: 'Interactive Editorial Documentary Website',
     category: 'frontend',
-    period: '2026',
+    period: 'June – July 2026',
     role: 'Lead Front-End Architect',
     badge: 'BytesFest 2026 Cultural Winner',
     badgeColor: 'purple',
@@ -282,6 +282,60 @@ export const PROJECTS: Project[] = [
       ]
     },
     tech: ['React', 'Vite', 'Vanilla CSS', 'Supabase', 'LocalStorage', 'REST API', 'SDG 3']
+  },
+  {
+    id: 'syncroutine',
+    title: 'SyncRoutine Tracker',
+    subtitle: 'Collaborative Multi-Person Daily Routine & Habit Tracker',
+    category: 'frontend',
+    period: 'Oct – Dec 2024',
+    role: 'Full-Stack Web Developer',
+    badge: 'Collaborative Web App',
+    badgeColor: 'purple',
+    summary: {
+      en: 'Collaborative routine tracking web application featuring multi-person room lobbies where family members or project teams log daily habits and monitor shared task completion in real-time.',
+      id: 'Aplikasi web pemantau rutinitas kolaboratif dengan fitur room lobby multi-pengguna untuk mencatat kebiasaan harian dan memantau progres bersama secara real-time.'
+    },
+    details: {
+      en: [
+        'Engineered room lobby management and real-time habit synchronization logic for multi-person daily routine tracking.',
+        'Built RESTful API endpoints and MongoDB data models to handle user authentication, lobby creation, and persistent task logs.',
+        'Designed a responsive interface using vanilla JavaScript (ES6+) and HTML5/CSS3 with interactive progress visualization.'
+      ],
+      id: [
+        'Merancang manajemen room lobby dan logika sinkronisasi kebiasaan harian secara real-time untuk banyak pengguna.',
+        'Membangun endpoint RESTful API dan model data MongoDB untuk autentikasi pengguna, pembuatan lobby, dan penyimpanan tugas harian.',
+        'Merancang antarmuka responsif menggunakan vanilla JavaScript (ES6+) dan HTML5/CSS3 dengan visualisasi progres interaktif.'
+      ]
+    },
+    tech: ['JavaScript (ES6+)', 'HTML5', 'CSS3', 'MongoDB', 'Node.js', 'REST API']
+  },
+  {
+    id: 'learnvid-ai',
+    title: 'LearnVid AI',
+    subtitle: 'AI-Powered Educational Video Generation Chatbot',
+    category: 'ai',
+    period: 'Sep – Dec 2025',
+    role: 'AI & Web Developer',
+    badge: 'Generative AI Platform',
+    badgeColor: 'amber',
+    summary: {
+      en: 'AI conversational platform featuring an interactive chatbot interface that automatically converts user prompt requests into structured educational video content.',
+      id: 'Platform percakapan AI dengan antarmuka chatbot interaktif yang mengonversi prompt masukan pengguna menjadi materi video pembelajaran terstruktur secara otomatis.'
+    },
+    details: {
+      en: [
+        'Integrated Python backend AI script generation pipelines to automatically transform conversational user prompts into video scripts and media layouts.',
+        'Built a responsive front-end conversational UI using HTML5, CSS3, and JavaScript featuring interactive message flows and embedded video playback.',
+        'Streamlined complex learning topic synthesis into visual video outputs, empowering self-paced visual learning.'
+      ],
+      id: [
+        'Mengintegrasikan pipeline AI pada backend Python untuk mengolah prompt pengguna menjadi naskah video dan susunan media secara otomatis.',
+        'Membangun antarmuka percakapan responsif dengan HTML5, CSS3, dan JavaScript yang dilengkapi alur pesan interaktif dan pemutar pratinjau video.',
+        'Menyederhanakan sintesis materi pembelajaran menjadi luaran video visual untuk mendukung pembelajaran mandiri.'
+      ]
+    },
+    tech: ['Python', 'Generative AI Pipelines', 'JavaScript', 'HTML5', 'CSS3', 'REST API']
   }
 ];
 
