@@ -207,7 +207,7 @@ export const PROJECTS: Project[] = [
     category: 'frontend',
     period: 'June – July 2026',
     role: 'Lead Front-End Architect',
-    badge: 'BytesFest 2026 Cultural Winner',
+    badge: 'BytesFest 2026 Competition',
     badgeColor: 'purple',
     liveUrl: 'https://dababayou.github.io/The-Living-Threads/',
     summary: {

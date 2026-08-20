@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Summary — Bayu Nismara Nagatama</title>
+  <title>Portfolio Document — Bayu Nismara Nagatama</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
     @page {
-      size: A4;
-      margin: 12mm 12mm 12mm 12mm;
+      size: A4 portrait;
+      margin: 8mm;
     }
 
     * {
@@ -22,44 +22,45 @@
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
       color: #0f172a;
       background: #ffffff;
-      line-height: 1.4;
-      font-size: 11px;
+      line-height: 1.35;
+      font-size: 10.5px;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
     .container {
       width: 100%;
-      max-width: 800px;
+      max-width: 100%;
       margin: 0 auto;
-      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     /* Header */
     header {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: #ffffff;
-      padding: 20px 24px;
-      border-radius: 12px;
-      margin-bottom: 16px;
+      padding: 16px 20px;
+      border-radius: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
     .header-info h1 {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
       color: #ffffff;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .header-info .subtitle {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: #38bdf8;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .header-info .portfolio-url {
@@ -69,131 +70,156 @@
       background: rgba(56, 189, 248, 0.15);
       border: 1px solid rgba(56, 189, 248, 0.4);
       color: #7dd3fc;
-      padding: 4px 10px;
-      border-radius: 6px;
+      padding: 3px 8px;
+      border-radius: 5px;
       font-weight: 700;
-      font-size: 11px;
+      font-size: 10px;
       text-decoration: none;
     }
 
     .contact-pills {
       text-align: right;
-      font-size: 10px;
+      font-size: 9.5px;
       color: #94a3b8;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .contact-pills a {
       color: #cbd5e1;
       text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Honors Ribbon */
+    .honors-ribbon {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      text-align: center;
+    }
+
+    .honor-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .honor-title {
+      font-size: 10px;
+      font-weight: 800;
+      color: #0369a1;
+    }
+
+    .honor-sub {
+      font-size: 8.5px;
+      color: #64748b;
       font-weight: 500;
     }
 
-    .contact-pills a:hover {
-      color: #38bdf8;
-    }
-
-    /* Sections */
+    /* Section Header */
     .section-title {
-      font-size: 13px;
+      font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       color: #0f172a;
       border-bottom: 2px solid #0284c7;
-      padding-bottom: 4px;
-      margin-bottom: 12px;
+      padding-bottom: 3px;
+      margin-top: 2px;
+      margin-bottom: 6px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .section-title span.badge {
-      font-size: 9px;
+      font-size: 8.5px;
       font-weight: 700;
       color: #0284c7;
       background: #e0f2fe;
-      padding: 2px 8px;
+      padding: 1px 6px;
       border-radius: 4px;
       text-transform: none;
     }
 
-    /* Grid layout */
+    /* Project Grid (7 Projects) */
     .project-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
     }
 
     .project-card {
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 12px;
-      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: #ffffff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .project-card.featured {
-      border-color: #cbd5e1;
-      background: #ffffff;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      border-color: #0284c7;
+      background: #f0f9ff;
     }
 
     .project-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 6px;
+      margin-bottom: 3px;
     }
 
     .project-title {
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 800;
       color: #0f172a;
     }
 
     .project-tag {
-      font-size: 8.5px;
+      font-size: 8px;
       font-weight: 700;
       color: #0369a1;
       background: #e0f2fe;
       border: 1px solid #bae6fd;
-      padding: 2px 6px;
-      border-radius: 4px;
+      padding: 1px 5px;
+      border-radius: 3px;
       white-space: nowrap;
     }
 
     .project-subtitle {
-      font-size: 10px;
-      font-weight: 600;
-      color: #475569;
-      margin-bottom: 6px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 4px;
     }
 
     .project-desc {
-      font-size: 9.5px;
+      font-size: 8.8px;
       color: #334155;
-      line-height: 1.35;
-      margin-bottom: 8px;
+      line-height: 1.3;
+      margin-bottom: 6px;
     }
 
     .project-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 6px;
+      padding-top: 4px;
       border-top: 1px solid #e2e8f0;
-      font-size: 9px;
+      font-size: 8.5px;
     }
 
     .tech-stack {
       font-weight: 600;
-      color: #64748b;
+      color: #475569;
     }
 
     .live-link {
@@ -202,31 +228,54 @@
       text-decoration: none;
     }
 
-    .live-link:hover {
-      text-decoration: underline;
+    /* Single full-width project card */
+    .project-card.full-width {
+      grid-column: span 2;
+    }
+
+    /* Research Box */
+    .research-box {
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .research-info h4 {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+
+    .research-info p {
+      font-size: 8.8px;
+      color: #475569;
+      line-height: 1.3;
     }
 
     /* Skills Box */
     .skills-box {
       background: #f1f5f9;
-      border-radius: 10px;
-      padding: 12px 16px;
-      margin-bottom: 16px;
+      border-radius: 8px;
+      padding: 8px 12px;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
+      gap: 8px;
     }
 
     .skill-group h4 {
-      font-size: 10px;
+      font-size: 9.5px;
       font-weight: 800;
       color: #0f172a;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
       text-transform: uppercase;
     }
 
     .skill-group p {
-      font-size: 9.5px;
+      font-size: 8.5px;
       color: #475569;
       line-height: 1.3;
     }
@@ -235,23 +284,22 @@
     .cta-banner {
       background: #0f172a;
       color: #ffffff;
-      padding: 14px 20px;
-      border-radius: 10px;
-      text-align: center;
+      padding: 10px 16px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .cta-text h3 {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     .cta-text p {
-      font-size: 10px;
+      font-size: 9px;
       color: #94a3b8;
     }
 
@@ -259,9 +307,9 @@
       background: #0284c7;
       color: #ffffff;
       font-weight: 800;
-      font-size: 10px;
-      padding: 8px 14px;
-      border-radius: 6px;
+      font-size: 9.5px;
+      padding: 6px 12px;
+      border-radius: 5px;
       text-decoration: none;
       white-space: nowrap;
     }
@@ -270,15 +318,16 @@
       body {
         background: #ffffff;
       }
-      .container {
-        padding: 0;
-      }
-      header {
+      header, .cta-banner {
         background: #0f172a !important;
         -webkit-print-color-adjust: exact;
       }
-      .cta-banner {
-        background: #0f172a !important;
+      .project-card.featured {
+        background: #f0f9ff !important;
+        -webkit-print-color-adjust: exact;
+      }
+      .skills-box, .honors-ribbon {
+        background: #f1f5f9 !important;
         -webkit-print-color-adjust: exact;
       }
     }
@@ -298,17 +347,37 @@
         </a>
       </div>
       <div class="contact-pills">
-        <div>Email: <a href="mailto:bayunismara@gmail.com">bayunismara@gmail.com</a></div>
+        <div>Email: <a href="mailto:bayunismaranagatama036@gmail.com">bayunismaranagatama036@gmail.com</a></div>
         <div>Phone/WA: <a href="https://wa.me/628887083077">+62 888-7083-077</a></div>
         <div>GitHub: <a href="https://github.com/dababayou">github.com/dababayou</a></div>
         <div>LinkedIn: <a href="https://linkedin.com/in/bayu-nismara-nagatama">in/bayu-nismara-nagatama</a></div>
       </div>
     </header>
 
+    <!-- HONORS & ACADEMIC RIBBON -->
+    <div class="honors-ribbon">
+      <div class="honor-item">
+        <span class="honor-title">1st Place National Champion</span>
+        <span class="honor-sub">TIC 9.0 Web Innovation Contest</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-title">2nd Runner-Up Regional Award</span>
+        <span class="honor-sub">INOVBOYO 2025 Innovation</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-title">3.68 / 4.00 GPA</span>
+        <span class="honor-sub">ITS Surabaya Informatics</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-title">International Gold Medals</span>
+        <span class="honor-sub">IICYMS & IIDC Science Fairs</span>
+      </div>
+    </div>
+
     <!-- SECTION: FEATURED PROJECTS -->
     <div class="section-title">
-      PROJECT PORTFOLIO SHOWCASE
-      <span class="badge">Click any project title or link for live demo</span>
+      FEATURED SOFTWARE & WEB PROJECTS
+      <span class="badge">Click any link for live web demos & repositories</span>
     </div>
 
     <div class="project-grid">
@@ -320,13 +389,13 @@
             <span class="project-title">PLN LegalBot AI</span>
             <span class="project-tag">BUMN Enterprise</span>
           </div>
-          <div class="project-subtitle">AI Legal Document Intelligence Platform</div>
+          <div class="project-subtitle">AI Legal Document Intelligence Platform (Contract)</div>
           <div class="project-desc">
-            Production web application for PT PLN (Persero) converting 500+ page regulations into instant structured answers. Built responsive React interface, JWT proxy layer, and live streaming response components.
+            Production legal AI web platform for PT PLN (Persero) converting 500+ page regulations into structured answers. Engineered responsive Vue 3 & React interfaces, JWT proxy, and live stream Qwen2.5 LLM components.
           </div>
         </div>
         <div class="project-meta">
-          <span class="tech-stack">React, Vite, Tailwind CSS, REST API</span>
+          <span class="tech-stack">Vue 3, React, TypeScript, Tailwind, REST API</span>
           <a href="https://pln-ai.vercel.app/legal" class="live-link" target="_blank">Live Demo ↗</a>
         </div>
       </div>
@@ -336,15 +405,15 @@
         <div>
           <div class="project-header">
             <span class="project-title">TENUNA: The Living Threads</span>
-            <span class="project-tag">BytesFest Winner</span>
+            <span class="project-tag">BytesFest Participant</span>
           </div>
           <div class="project-subtitle">Interactive WebGL Editorial Documentary</div>
           <div class="project-desc">
-            Cultural editorial web documentary celebrating Sumba Ikat weaving heritage (SDG 11). Engineered using React 19, GSAP ScrollTrigger timeline animations, and a 3D WebGL (OGL) circular gallery.
+            Editorial web documentary celebrating Sumba Ikat weaving heritage (SDG 11). Engineered using React 19, GSAP ScrollTrigger timeline animations, drag-flip language switcher, and a 3D WebGL (OGL) circular gallery.
           </div>
         </div>
         <div class="project-meta">
-          <span class="tech-stack">React 19, GSAP, 3D WebGL (OGL)</span>
+          <span class="tech-stack">React 19, GSAP, 3D WebGL (OGL), Vite</span>
           <a href="https://dababayou.github.io/The-Living-Threads/" class="live-link" target="_blank">Live App ↗</a>
         </div>
       </div>
@@ -353,16 +422,16 @@
       <div class="project-card">
         <div>
           <div class="project-header">
-            <span class="project-title">NutriWise</span>
-            <span class="project-tag">1st Place TIC 9.0</span>
+            <span class="project-title">NutriWise Platform</span>
+            <span class="project-tag">1st Winner TIC 9.0</span>
           </div>
-          <div class="project-subtitle">Interactive Digital Nutrition Assistant</div>
+          <div class="project-subtitle">Interactive Digital Nutrition & Health Assistant</div>
           <div class="project-desc">
-            National champion web platform featuring BMI/caloric calculators, NCD risk quiz, and Myth vs Fact education module aligned with SDG 3. Engineered hybrid Supabase & LocalStorage deep-merge data layer.
+            National champion web app with BMI/caloric calculators, NCD risk quiz, and Myth vs Fact module aligned with SDG 3. Engineered hybrid Supabase & LocalStorage deep-merge sync layer.
           </div>
         </div>
         <div class="project-meta">
-          <span class="tech-stack">React, Supabase, LocalStorage</span>
+          <span class="tech-stack">React, Supabase, LocalStorage, Tailwind</span>
           <a href="https://nutriwise-rose.vercel.app/" class="live-link" target="_blank">Live App ↗</a>
         </div>
       </div>
@@ -371,16 +440,16 @@
       <div class="project-card">
         <div>
           <div class="project-header">
-            <span class="project-title">PharmaCare+</span>
+            <span class="project-title">PharmaCare+ AI</span>
             <span class="project-tag">INOVBOYO '25 Award</span>
           </div>
-          <div class="project-subtitle">AI Elderly Medication Management Platform</div>
+          <div class="project-subtitle">AI Elderly Medication Management System</div>
           <div class="project-desc">
-            Regional innovation award-winning healthcare web app assisting elderly patients & caregivers with automated pill reminders, dangerous drug-interaction detection, and online pharmacy consultation.
+            Regional innovation award healthcare app assisting elderly patients & caregivers with automated pill reminders, dangerous drug-interaction detection, and AI consultation modules.
           </div>
         </div>
         <div class="project-meta">
-          <span class="tech-stack">React, AI Engine, Tailwind CSS</span>
+          <span class="tech-stack">React, AI Engine, Tailwind CSS, Lucide</span>
           <a href="https://pharmacare-gericommunity.lovable.app" class="live-link" target="_blank">Live App ↗</a>
         </div>
       </div>
@@ -394,11 +463,11 @@
           </div>
           <div class="project-subtitle">Career Matching & Gap Analyzer Platform</div>
           <div class="project-desc">
-            Capstone platform in collaboration with PT SEVIMA parsing CVs via Claude Sonnet 4.6, analyzing competency gaps against 5 IT roles, and serving MCQ skill verification with interactive radar charts.
+            Capstone platform in collaboration with PT SEVIMA parsing CVs via Claude 4.6, analyzing competency gaps against IT roles, and serving MCQ skill verification with interactive radar charts.
           </div>
         </div>
         <div class="project-meta">
-          <span class="tech-stack">Laravel 12, Tailwind v4, FastAPI</span>
+          <span class="tech-stack">Laravel 12, Tailwind v4, Claude 4.6, FastAPI</span>
           <a href="https://dababayou.github.io/Portfolio/#projects" class="live-link" target="_blank">View Details ↗</a>
         </div>
       </div>
@@ -407,39 +476,61 @@
       <div class="project-card">
         <div>
           <div class="project-header">
-            <span class="project-title">SyncRoutine & LearnVid AI</span>
-            <span class="project-tag">Full-Stack & AI</span>
+            <span class="project-title">SyncRoutine Tracker</span>
+            <span class="project-tag">Full-Stack Web App</span>
           </div>
-          <div class="project-subtitle">Collaborative Routine Tracker & AI Video Chatbot</div>
+          <div class="project-subtitle">Multi-Person Collaborative Routine & Habit Hub</div>
           <div class="project-desc">
-            SyncRoutine: Multi-user routine tracker with room lobbies (MongoDB, ES6+). LearnVid AI: Conversational AI platform turning user topic prompts into structured educational videos (Python, AI Pipelines).
+            Collaborative web application allowing families and teams to connect in lobby rooms, track shared daily routines, view real-time task sync, and maintain group accountability.
           </div>
         </div>
         <div class="project-meta">
-          <span class="tech-stack">JavaScript, Node.js, Python, MongoDB</span>
+          <span class="tech-stack">JavaScript (ES6+), HTML5, CSS3, MongoDB, Node.js</span>
+          <a href="https://dababayou.github.io/Portfolio/#projects" class="live-link" target="_blank">View Details ↗</a>
+        </div>
+      </div>
+
+      <!-- Project 7 (Full Width) -->
+      <div class="project-card full-width">
+        <div>
+          <div class="project-header">
+            <span class="project-title">LearnVid AI Platform</span>
+            <span class="project-tag">AI Educational Web</span>
+          </div>
+          <div class="project-subtitle">AI-Powered Conversational Educational Video Generator</div>
+          <div class="project-desc">
+            Intelligent chatbot web platform converting user topic prompts into structured educational video scripts and automated media generation. Features multi-turn chat memory, video preview player, and custom prompt parameter tuning.
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="tech-stack">Python, Generative AI Pipelines, JavaScript, HTML5, CSS3, REST API</span>
           <a href="https://dababayou.github.io/Portfolio/#projects" class="live-link" target="_blank">View Details ↗</a>
         </div>
       </div>
 
     </div>
 
-    <!-- CORE SKILLS SUMMARY -->
-    <div class="section-title">
-      TECHNICAL SKILLS & COMPETENCIES
+    <!-- AI MEDICAL IMAGING RESEARCH HIGHLIGHT -->
+    <div class="research-box">
+      <div class="research-info">
+        <h4>🔬 AI Medical Imaging Research — CBCT Anatomical Landmark Segmentation</h4>
+        <p>Undergraduate thesis research at ITS Surabaya using Deep Learning (PyTorch, YOLOv8/v11, Segment Anything Model) to automate 3D Cone Beam Computed Tomography (CBCT) dental landmark detection with sub-millimeter precision.</p>
+      </div>
     </div>
 
+    <!-- CORE SKILLS MATRIX -->
     <div class="skills-box">
       <div class="skill-group">
         <h4>Front-End Engineering</h4>
-        <p>React.js, TypeScript, Next.js, HTML5/CSS3, Tailwind CSS, Vite, State Management, Responsive Design</p>
+        <p>React.js, Vue.js 3, TypeScript, Next.js, HTML5/CSS3, Tailwind CSS v4, Vite, State Management, Responsive Web</p>
       </div>
       <div class="skill-group">
         <h4>Frameworks & Backend</h4>
-        <p>Laravel 12, Node.js, Express.js, RESTful APIs, JWT Auth, Python, FastAPI, MongoDB, Supabase</p>
+        <p>Laravel 12, Node.js, Express.js, RESTful APIs, JWT Auth, Python, FastAPI, MongoDB, Supabase, Postman</p>
       </div>
       <div class="skill-group">
-        <h4>Tools & Best Practices</h4>
-        <p>Git/GitHub, VS Code, Agile/Scrum, WebGL (OGL), GSAP Animations, UI/UX Prototyping</p>
+        <h4>Tools & Specialties</h4>
+        <p>Git/GitHub, Agile/Scrum, WebGL (OGL), GSAP ScrollTrigger, Deep Learning (PyTorch, YOLO), UI Prototyping</p>
       </div>
     </div>
 
@@ -447,10 +538,10 @@
     <div class="cta-banner">
       <div class="cta-text">
         <h3>EXPLORE FULL INTERACTIVE PORTFOLIO & CODE REPOSITORIES</h3>
-        <p>Visit the interactive live site to view animations, source code, and full project breakdowns.</p>
+        <p>Visit the live web portfolio to view interactive animations, source code, and full project documentation.</p>
       </div>
       <a href="https://dababayou.github.io/Portfolio/" class="cta-button" target="_blank">
-        OPEN WEB PORTFOLIO ↗
+        OPEN LIVE PORTFOLIO ↗
       </a>
     </div>
 
