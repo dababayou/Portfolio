@@ -79,8 +79,8 @@ export const PERSONAL_INFO = {
   github: 'https://github.com/dababayou',
   cvPath: `${import.meta.env.BASE_URL}CV_Bayu_Nismara_Nagatama.pdf`,
   bio: {
-    en: 'Motivated Informatics Engineering student at ITS Surabaya with hands-on enterprise experience at PT PLN (Persero) and Roundbytes agency. Specializing in Vue.js 3, React, TypeScript, Tailwind CSS, and shadcn-vue, while integrating AI & deep learning capabilities into production web systems.',
-    id: 'Mahasiswa Teknik Informatika ITS Surabaya yang berdedikasi dengan pengalaman kerja profesional di PT PLN (Persero) dan agensi Roundbytes. Spesialisasi dalam Vue.js 3, React, TypeScript, Tailwind CSS, dan shadcn-vue, serta berpengalaman mengintegrasikan kecerdasan buatan (AI) ke dalam aplikasi web modern.'
+    en: 'Detail-oriented Informatics Engineering student at ITS Surabaya (6th Semester) specializing in Front-End Web Development. Professional experience at PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) and Roundbytes agency, alongside AI medical imaging research (YOLO CBCT) and award-winning web innovation (1st Place TIC 9.0, 2nd Runner-Up INOVBOYO 2025).',
+    id: 'Mahasiswa Teknik Informatika ITS Surabaya (Semester 6) yang berfokus pada Pengembang Web Front-End. Berpengalaman profesional di PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) dan agensi Roundbytes, serta aktif dalam riset AI medis (YOLO CBCT) dan kompetisi inovasi web berprestasi (Juara 1 TIC 9.0, Juara Harapan 2 INOVBOYO 2025).'
   }
 };
 
@@ -256,6 +256,33 @@ export const PROJECTS: Project[] = [
     tech: ['React', 'AI Drug Interaction Engine', 'Tailwind CSS', 'Lovable Platform', 'REST API']
   },
   {
+    id: 'nutriwise',
+    title: 'NutriWise',
+    subtitle: 'Interactive Digital Nutrition Assistant Platform',
+    category: 'competition',
+    period: 'Jul – Aug 2025',
+    role: 'Lead & Front-End Developer',
+    badge: '1st Place TIC 9.0 National',
+    badgeColor: 'emerald',
+    summary: {
+      en: 'Interactive digital health platform combining a BMI/caloric/fluid calculator, NCD risk screening quiz, and Myth vs Fact nutrition education module aligned with SDG 3.',
+      id: 'Platform kesehatan digital interaktif yang mengombinasikan kalkulator BMI/kalori/cairan, kuis skrining Penyakit Tidak Menular (PTM), dan modul edukasi nutrisi Mitos vs Fakta selaras dengan SDG 3.'
+    },
+    details: {
+      en: [
+        'Won 1st Place in Technology Innovative Challenge (TIC) 9.0, a national web development competition organized by HMTI Universitas Jember themed "Push the Impact: Web Innovation for SDGs".',
+        'Built presentation layer with React (Vite) and vanilla CSS, featuring personalized healthy-lifestyle recommendation algorithms aligned with SDG 3 (Good Health and Well-Being).',
+        'Engineered a hybrid data layer combining browser LocalStorage and Supabase cloud storage synchronized through a deep-merge strategy.'
+      ],
+      id: [
+        'Meraih Juara 1 pada Technology Innovative Challenge (TIC) 9.0, kompetisi pengembangan web tingkat nasional yang diselenggarakan HMTI Universitas Jember.',
+        'Membangun antarmuka dengan React (Vite) dan vanilla CSS yang menyajikan rekomendasi gaya hidup sehat terpersonalisasi selaras dengan SDG 3 (Good Health and Well-Being).',
+        'Mengimplementasikan layer data hibrid yang mengombinasikan LocalStorage browser dan cloud Supabase dengan strategi pembaruan deep-merge.'
+      ]
+    },
+    tech: ['React', 'Vite', 'Vanilla CSS', 'Supabase', 'LocalStorage', 'REST API', 'SDG 3']
+  },
+  {
     id: 'visulearn',
     title: 'VISULEARN AI',
     subtitle: 'AI-Powered Visual Learning Card System',
@@ -311,6 +338,19 @@ export const RESEARCH_THESIS = {
 };
 
 export const ACHIEVEMENTS: Achievement[] = [
+  {
+    id: 'tic-9',
+    title: '1st Place (Juara 1) — Technology Innovative Challenge 9.0',
+    issuer: 'Universitas Jember (HMTI) — National Competition',
+    date: 'Aug 2025',
+    award: 'National Web Innovation Champion',
+    category: 'competition',
+    description: {
+      en: 'Won 1st Place in national web development competition for NutriWise under the "Good Health and Well-Being" SDG 3 theme.',
+      id: 'Meraih Juara 1 dalam kompetisi pengembangan web tingkat nasional untuk platform NutriWise kategori SDG 3 (Good Health and Well-Being).'
+    },
+    iconName: 'Trophy'
+  },
   {
     id: 'soegijapranata-choir',
     title: 'Gold Medal (x3) & 1st Place (Folklore Category)',
@@ -420,12 +460,13 @@ export const SKILL_CATEGORIES = [
     ]
   },
   {
-    title: { en: 'Languages & Backend', id: 'Bahasa & Backend' },
+    title: { en: 'Backend & Database (BaaS)', id: 'Backend & Basis Data' },
     skills: [
+      { name: 'Supabase', level: 'Intermediate', icon: '⚡' },
       { name: 'Python', level: 'Advanced', icon: '🐍' },
       { name: 'JavaScript (ES6+)', level: 'Advanced', icon: '💛' },
       { name: 'Laravel 12 / PHP', level: 'Intermediate', icon: '🔴' },
-      { name: 'SQL & Database Systems', level: 'Intermediate', icon: '🗄️' },
+      { name: 'PostgreSQL / SQL', level: 'Intermediate', icon: '🗄️' },
       { name: 'C++', level: 'Intermediate', icon: '⚙️' }
     ]
   },

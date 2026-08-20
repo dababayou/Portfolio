@@ -77,8 +77,8 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
                 <div className="text-xs text-slate-400 font-medium">{lang === 'en' ? 'International Choir' : 'Juara 1 Internasional'}</div>
               </div>
               <div className="p-3.5 rounded-2xl glass-panel border border-slate-800">
-                <div className="text-2xl font-black text-emerald-400">INOVBOYO '25</div>
-                <div className="text-xs text-slate-400 font-medium">{lang === 'en' ? '2nd Runner-Up Award' : 'Juara Harapan 2 Regional'}</div>
+                <div className="text-2xl font-black text-emerald-400">1st TIC 9.0</div>
+                <div className="text-xs text-slate-400 font-medium">{lang === 'en' ? 'National Web Champion' : 'Juara 1 Web Nasional'}</div>
               </div>
             </div>
 
