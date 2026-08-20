@@ -29,10 +29,14 @@ export const AchievementsSection: React.FC<AchievementsProps> = ({ lang }) => {
 
         {/* Achievements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {ACHIEVEMENTS.map((ach) => (
+          {ACHIEVEMENTS.map((ach, idx) => (
             <div
               key={ach.id}
-              className="glass-panel glass-panel-hover rounded-3xl p-6 border border-slate-800 flex items-start gap-4"
+              className={`glass-panel glass-panel-hover rounded-3xl p-6 border border-slate-800 flex items-start gap-4 ${
+                idx === ACHIEVEMENTS.length - 1 && ACHIEVEMENTS.length % 2 !== 0
+                  ? 'md:col-span-2 md:w-[calc(50%-0.75rem)] md:mx-auto'
+                  : ''
+              }`}
             >
               <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center shrink-0">
                 <Trophy className="w-6 h-6" />

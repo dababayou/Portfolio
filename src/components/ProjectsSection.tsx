@@ -65,10 +65,14 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
 
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredProjects.map((project) => (
+          {filteredProjects.map((project, idx) => (
             <div
               key={project.id}
-              className="glass-panel glass-panel-hover rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col justify-between space-y-6 relative overflow-hidden group cursor-pointer"
+              className={`glass-panel glass-panel-hover rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col justify-between space-y-6 relative overflow-hidden group cursor-pointer ${
+                idx === filteredProjects.length - 1 && filteredProjects.length % 2 !== 0
+                  ? 'md:col-span-2 md:w-[calc(50%-1rem)] md:mx-auto'
+                  : ''
+              }`}
               onClick={() => setSelectedProject(project)}
             >
               
