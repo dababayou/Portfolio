@@ -7,6 +7,8 @@ interface OrganizationProps {
 }
 
 export const OrganizationSection: React.FC<OrganizationProps> = ({ lang }) => {
+  if (!ORGANIZATIONAL_EXPERIENCE || ORGANIZATIONAL_EXPERIENCE.length === 0) return null;
+
   return (
     <section className="py-20 relative bg-[#07090e]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

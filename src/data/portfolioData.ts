@@ -70,8 +70,8 @@ export const PERSONAL_INFO = {
   },
   university: 'Institut Teknologi Sepuluh Nopember (ITS) Surabaya',
   degree: 'Bachelor of Informatics Engineering (Teknik Informatika)',
-  semester: '6th Semester',
-  gpa: '3.64 / 4.00',
+  semester: '7th Semester',
+  gpa: '3.68 / 4.00',
   location: 'Surabaya, East Java, Indonesia',
   email: 'bayunismaranagatama036@gmail.com',
   phone: '+62 888-7083-077',
@@ -79,8 +79,8 @@ export const PERSONAL_INFO = {
   github: 'https://github.com/dababayou',
   cvPath: `${import.meta.env.BASE_URL}CV_Bayu_Nismara_Nagatama.pdf`,
   bio: {
-    en: 'Detail-oriented Informatics Engineering student at ITS Surabaya (6th Semester) specializing in Front-End Web Development. Professional experience at PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) and Roundbytes agency, alongside AI medical imaging research (YOLO CBCT) and award-winning web innovation (1st Place TIC 9.0, 2nd Runner-Up INOVBOYO 2025).',
-    id: 'Mahasiswa Teknik Informatika ITS Surabaya (Semester 6) yang berfokus pada Pengembang Web Front-End. Berpengalaman profesional di PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) dan agensi Roundbytes, serta aktif dalam riset AI medis (YOLO CBCT) dan kompetisi inovasi web berprestasi (Juara 1 TIC 9.0, Juara Harapan 2 INOVBOYO 2025).'
+    en: 'Motivated and detail-oriented Informatics Engineering student at ITS Surabaya (7th Semester, GPA 3.68/4.00) specializing in Front-End Web Development. Professional experience at PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) and Roundbytes agency, alongside AI medical imaging research (YOLO CBCT) and award-winning web innovation (1st Place TIC 9.0, 2nd Runner-Up INOVBOYO 2025).',
+    id: 'Mahasiswa Teknik Informatika ITS Surabaya (Semester 7, IPK 3.68/4.00) yang berfokus pada Pengembang Web Front-End. Berpengalaman profesional di PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) dan agensi Roundbytes, serta aktif dalam riset AI medis (YOLO CBCT) dan kompetisi inovasi web berprestasi (Juara 1 TIC 9.0, Juara Harapan 2 INOVBOYO 2025).'
   }
 };
 
@@ -264,6 +264,7 @@ export const PROJECTS: Project[] = [
     role: 'Lead & Front-End Developer',
     badge: '1st Place TIC 9.0 National',
     badgeColor: 'emerald',
+    liveUrl: 'https://nutriwise-rose.vercel.app/',
     summary: {
       en: 'Interactive digital health platform combining a BMI/caloric/fluid calculator, NCD risk screening quiz, and Myth vs Fact nutrition education module aligned with SDG 3.',
       id: 'Platform kesehatan digital interaktif yang mengombinasikan kalkulator BMI/kalori/cairan, kuis skrining Penyakit Tidak Menular (PTM), dan modul edukasi nutrisi Mitos vs Fakta selaras dengan SDG 3.'
@@ -281,33 +282,6 @@ export const PROJECTS: Project[] = [
       ]
     },
     tech: ['React', 'Vite', 'Vanilla CSS', 'Supabase', 'LocalStorage', 'REST API', 'SDG 3']
-  },
-  {
-    id: 'visulearn',
-    title: 'VISULEARN AI',
-    subtitle: 'AI-Powered Visual Learning Card System',
-    category: 'ai',
-    period: '2025',
-    role: 'AI Pipeline & System Architect',
-    badge: 'Samsung Solve for Tomorrow 2026',
-    badgeColor: 'amber',
-    summary: {
-      en: 'AI pipeline converting teacher speech into structured visual learning card templates tailored for Deaf students in Indonesian SMP/SMA science classes.',
-      id: 'Pipeline AI yang mengubah ucapan guru menjadi 5 templat kartu pembelajaran visual terstruktur untuk siswa Tuli di kelas IPA SMP/SMA.'
-    },
-    details: {
-      en: [
-        'Designed pipeline with 5 visual card formats: Process, Comparison, Hierarchy, Timeline, and Concept templates.',
-        'Integrated OpenAI Whisper STT with an academic-to-plain-language dictionary and teacher verification gate for pedagogical control.',
-        'Authored system architecture specification document and competition proposal for Samsung Solve for Tomorrow 2026.'
-      ],
-      id: [
-        'Merancang pipeline dengan 5 format templat kartu visual: Proses, Komparasi, Hierarki, Garis Waktu, dan Konsep.',
-        'Mengintegrasikan Whisper STT dengan kamus istilah akademik-ke-bahasa sederhana serta gerbang verifikasi guru.',
-        'Menyusun dokumen arsitektur sistem dan proposal kompetisi Samsung Solve for Tomorrow 2026.'
-      ]
-    },
-    tech: ['Whisper STT', 'Python', 'AI Natural Language Pipeline', 'System Architecture']
   }
 ];
 
@@ -352,19 +326,6 @@ export const ACHIEVEMENTS: Achievement[] = [
     iconName: 'Trophy'
   },
   {
-    id: 'soegijapranata-choir',
-    title: 'Gold Medal (x3) & 1st Place (Folklore Category)',
-    issuer: '3rd Soegijapranata International Choir Competition',
-    date: 'Nov 2024',
-    award: 'International Champion',
-    category: 'international',
-    description: {
-      en: 'Competed with ITS Choir Ensemble across Folklore, Sacred, and Mixed Voice categories, achieving 3 Gold Medals and 1st Place overall in Folklore.',
-      id: 'Berkompetisi bersama tim Paduan Suara Mahasiswa ITS di 3 kategori (Folklore, Sacred, Mixed Voice), mengandalkan 3 Gold Medal dan Juara 1 Kategori Folklore.'
-    },
-    iconName: 'Trophy'
-  },
-  {
     id: 'inovboyo-2025',
     title: '2nd Runner-Up (Juara Harapan 2)',
     issuer: 'Inovasi Surabaya (INOVBOYO) 2025 — BRIDA Jatim',
@@ -389,19 +350,6 @@ export const ACHIEVEMENTS: Achievement[] = [
       id: 'Mencapai babak semifinal dalam kompetisi pemrograman kompetitif dan penalaran logika di Universitas Surabaya.'
     },
     iconName: 'Code'
-  },
-  {
-    id: 'bebras-logic',
-    title: '2nd Place Regional — Computational Thinking',
-    issuer: 'Bebras International Competition (Ubaya Region)',
-    date: 'Nov 2021',
-    award: '2nd Place Regional',
-    category: 'competition',
-    description: {
-      en: 'Achieved 2nd place in regional computational thinking and algorithmic problem solving competition.',
-      id: 'Meraih Juara 2 regional dalam kompetisi berpikir komputasional dan pemecahan masalah algoritmik Bebras.'
-    },
-    iconName: 'Sparkles'
   }
 ];
 
@@ -482,32 +430,9 @@ export const SKILL_CATEGORIES = [
   }
 ];
 
-export const ORGANIZATIONAL_EXPERIENCE = [
-  {
-    role: 'Staff — Departemen Rumah Tangga',
-    organization: 'UKM PSM ITS (Student Choir ITS)',
-    period: 'Mar 2025 – Feb 2026',
-    description: {
-      en: 'Handled organizational welfare and served as PIC for official organization jacket procurement end-to-end.',
-      id: 'Mengelola kesejahteraan anggota serta menjadi PIC pengadaan jaket resmi organisasi dari konseptual hingga distribusi.'
-    }
-  },
-  {
-    role: 'Head of Operational Division',
-    organization: 'Organizing Committee, UKM PSM ITS',
-    period: 'Jul 2024 – Jul 2025',
-    description: {
-      en: 'Led the Operational Division for a year-long new member cadre program (kaderisasi), coordinating venue, logistics, and multi-division alignment.',
-      id: 'Ketua Divisi Operasional program kaderisasi anggota baru selama 1 tahun, mengordinasikan logistik, lokasi, dan kolaborasi antar-divisi.'
-    }
-  },
-  {
-    role: 'Head of Regular Group',
-    organization: 'Dewan Ambalan (Scout Leadership), Frateran High School',
-    period: 'Aug 2020 – Jun 2023',
-    description: {
-      en: 'Led scout activities, leadership development workshops, and outdoor programs across 3 years.',
-      id: 'Memimpin kelompok pramuka, lokakarya kepemimpinan, dan kegiatan outdoor selama 3 tahun.'
-    }
-  }
-];
+export const ORGANIZATIONAL_EXPERIENCE: Array<{
+  role: string;
+  organization: string;
+  period: string;
+  description: { en: string; id: string };
+}> = [];
