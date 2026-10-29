@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Briefcase, Calendar, MapPin, CheckCircle2, ChevronRight, Building2, ExternalLink } from 'lucide-react';
 import { EXPERIENCES } from '../data/portfolioData';
 
@@ -8,11 +8,23 @@ interface ExperienceProps {
 
 export const ExperienceSection: React.FC<ExperienceProps> = ({ lang }) => {
   const [activeTab, setActiveTab] = useState(EXPERIENCES[0].id);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const activeExp = EXPERIENCES.find(e => e.id === activeTab) || EXPERIENCES[0];
 
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { el.classList.add('revealed'); observer.unobserve(el); } },
+      { threshold: 0.05 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="experience" className="py-20 relative bg-slate-950/60 border-y border-slate-800/80">
+    <section id="experience" ref={sectionRef} className="py-20 relative bg-slate-950/60 border-y border-slate-800/80 section-reveal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
