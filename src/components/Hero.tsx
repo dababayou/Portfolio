@@ -42,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
             {/* Status / Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-cyan-300 text-xs font-medium shadow-inner shadow-cyan-500/10">
               <GraduationCap className="w-4 h-4 text-cyan-400" />
-              <span>{lang === 'en' ? 'ITS Informatics Engineering • GPA 3.68 / 4.00' : 'Teknik Informatika ITS • IPK 3.68 / 4.00'}</span>
+              <span>{lang === 'en' ? 'ITS Informatics Engineering • GPA 3.69 / 4.00' : 'Teknik Informatika ITS • IPK 3.69 / 4.00'}</span>
             </div>
 
             {/* Headline */}
@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
                 <div className="text-xs text-slate-400 font-medium truncate mt-1">{lang === 'en' ? 'Work Experience' : 'Pengalaman Kerja'}</div>
               </div>
               <div className="p-4 rounded-2xl glass-panel border border-slate-800 flex flex-col justify-between h-full hover:border-indigo-500/30 transition-all shadow-sm">
-                <div className="text-base sm:text-lg font-black text-indigo-400 truncate">3.68 / 4.00</div>
+                <div className="text-base sm:text-lg font-black text-indigo-400 truncate">3.69 / 4.00</div>
                 <div className="text-xs text-slate-400 font-medium truncate mt-1">{lang === 'en' ? 'ITS Surabaya GPA' : 'IPK Teknik Informatika'}</div>
               </div>
               <div className="p-4 rounded-2xl glass-panel border border-slate-800 flex flex-col justify-between h-full hover:border-amber-500/30 transition-all shadow-sm">
@@ -179,7 +179,7 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
                     <span className="text-indigo-300">education</span>: <span className="text-emerald-300">'Informatics @ ITS Surabaya'</span>,
                   </div>
                   <div className="pl-4">
-                    <span className="text-indigo-300">gpa</span>: <span className="text-amber-400">3.68</span>,
+                    <span className="text-indigo-300">gpa</span>: <span className="text-amber-400">3.69</span>,
                   </div>
                   <div className="pl-4">
                     <span className="text-indigo-300">currentRole</span>: <span className="text-emerald-300">'Front-End Dev @ PLN Group'</span>,

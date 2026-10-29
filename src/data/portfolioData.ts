@@ -71,7 +71,7 @@ export const PERSONAL_INFO = {
   university: 'Institut Teknologi Sepuluh Nopember (ITS) Surabaya',
   degree: 'Bachelor of Informatics Engineering (Teknik Informatika)',
   semester: '7th Semester',
-  gpa: '3.68 / 4.00',
+  gpa: '3.69 / 4.00',
   location: 'Surabaya, East Java, Indonesia',
   email: 'bayunismaranagatama036@gmail.com',
   phone: '+62 888-7083-077',
@@ -80,8 +80,8 @@ export const PERSONAL_INFO = {
   cvPath: `${import.meta.env.BASE_URL}CV_Bayu_Nismara_Nagatama.pdf`,
   portfolioDocPath: `${import.meta.env.BASE_URL}portfolio_doc.html`,
   bio: {
-    en: 'Motivated and detail-oriented Informatics Engineering student at ITS Surabaya (7th Semester, GPA 3.68/4.00) specializing in Front-End Web Development. Professional experience at PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) and Roundbytes agency, alongside AI medical imaging research (YOLO CBCT) and award-winning web innovation (1st Place TIC 9.0, 2nd Runner-Up INOVBOYO 2025).',
-    id: 'Mahasiswa Teknik Informatika ITS Surabaya (Semester 7, IPK 3.68/4.00) yang berfokus pada Pengembang Web Front-End. Berpengalaman profesional di PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) dan agensi Roundbytes, serta aktif dalam riset AI medis (YOLO CBCT) dan kompetisi inovasi web berprestasi (Juara 1 TIC 9.0, Juara Harapan 2 INOVBOYO 2025).'
+    en: 'Motivated and detail-oriented Informatics Engineering student at ITS Surabaya (7th Semester, GPA 3.69/4.00) specializing in Front-End Web Development. Professional experience at PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) and Roundbytes agency, alongside AI medical imaging research (YOLO CBCT) and award-winning web innovation (1st Place TIC 9.0, 2nd Runner-Up INOVBOYO 2025).',
+    id: 'Mahasiswa Teknik Informatika ITS Surabaya (Semester 7, IPK 3.69/4.00) yang berfokus pada Pengembang Web Front-End. Berpengalaman profesional di PLN Group (Vue.js 3, TypeScript, Tailwind, LLM Qwen2.5) dan agensi Roundbytes, serta aktif dalam riset AI medis (YOLO CBCT) dan kompetisi inovasi web berprestasi (Juara 1 TIC 9.0, Juara Harapan 2 INOVBOYO 2025).'
   }
 };
 
@@ -265,7 +265,7 @@ export const PROJECTS: Project[] = [
     role: 'Lead & Front-End Developer',
     badge: '1st Place TIC 9.0 National',
     badgeColor: 'emerald',
-    liveUrl: 'https://nutriwise-rose.vercel.app/',
+    liveUrl: 'https://nutri-wise-tau.vercel.app/',
     summary: {
       en: 'Interactive digital health platform combining a BMI/caloric/fluid calculator, NCD risk screening quiz, and Myth vs Fact nutrition education module aligned with SDG 3.',
       id: 'Platform kesehatan digital interaktif yang mengombinasikan kalkulator BMI/kalori/cairan, kuis skrining Penyakit Tidak Menular (PTM), dan modul edukasi nutrisi Mitos vs Fakta selaras dengan SDG 3.'
