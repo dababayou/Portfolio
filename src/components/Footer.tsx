@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Heart, Sparkles, Code2 } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface FooterProps {
@@ -12,31 +12,30 @@ export const Footer: React.FC<FooterProps> = ({ lang }) => {
   };
 
   return (
-    <footer className="bg-[#05070a] border-t border-slate-800/80 py-12 text-xs text-slate-400">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="border-t border-neutral-800/80 py-12 text-xs font-mono text-neutral-500 bg-neutral-950">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 font-extrabold flex items-center justify-center border border-cyan-500/20">
-            BN
-          </div>
-          <div>
-            <div className="font-bold text-white text-sm">{PERSONAL_INFO.name}</div>
-            <div className="text-slate-400">
-              {lang === 'en' ? 'Front-End Web Developer • ITS Surabaya' : 'Pengembang Web Front-End • ITS Surabaya'}
-            </div>
-          </div>
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 text-center sm:text-left">
+          <span className="font-bold text-white text-sm">
+            {PERSONAL_INFO.name}
+          </span>
+          <span className="hidden sm:inline text-neutral-700">•</span>
+          <span className="text-neutral-400">
+            {lang === 'en'
+              ? 'ENGINEERED WITH REACT 19, TS & FRAMER MOTION'
+              : 'DIKEMBANGKAN DENGAN REACT 19, TS & FRAMER MOTION'}
+          </span>
         </div>
 
-        <div className="flex items-center gap-2 text-slate-400">
-          <span>{lang === 'en' ? 'Built with React 19, TypeScript & Tailwind CSS' : 'Dibuat dengan React 19, TypeScript & Tailwind CSS'}</span>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <span className="text-slate-400">© 2026 Bayu Nismara Nagatama. All rights reserved.</span>
+        <div className="flex items-center gap-6">
+          <span>
+            © {new Date().getFullYear()} ALL RIGHTS RESERVED
+          </span>
           <button
             onClick={scrollToTop}
-            className="p-2.5 rounded-xl bg-slate-900 text-slate-300 hover:text-cyan-400 border border-slate-800 hover:border-cyan-500/40 transition-all"
-            title="Back to Top"
+            className="p-2.5 rounded-lg border border-neutral-800 text-neutral-400 hover:text-cyan-400 hover:border-neutral-700 transition-colors cursor-pointer"
+            title="Scroll to Top"
+            aria-label="Scroll to Top"
           >
             <ArrowUp className="w-4 h-4" />
           </button>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ExperienceSection } from './components/ExperienceSection';
@@ -12,18 +12,6 @@ import { Footer } from './components/Footer';
 
 export function App() {
   const [lang, setLang] = useState<'en' | 'id'>('en');
-  const cursorRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const cursor = cursorRef.current;
-    if (!cursor) return;
-    const move = (e: MouseEvent) => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-    };
-    window.addEventListener('mousemove', move);
-    return () => window.removeEventListener('mousemove', move);
-  }, []);
 
   useEffect(() => {
     const handleHashScroll = () => {
@@ -37,10 +25,7 @@ export function App() {
       }
     };
 
-    // Auto scroll to target section on initial load when URL contains hash (#projects, etc.)
     const timer = setTimeout(handleHashScroll, 150);
-
-    // Also listen to hashchange events
     window.addEventListener('hashchange', handleHashScroll);
 
     return () => {
@@ -50,16 +35,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500 selection:text-black">
-      {/* Cursor glow */}
-      <div
-        ref={cursorRef}
-        className="pointer-events-none fixed z-[999] -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full"
-        style={{
-          background: 'radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%)',
-          transition: 'left 0.12s ease, top 0.12s ease',
-        }}
-      />
+    <div className="min-h-screen bg-[--color-bg] text-[--color-text]">
       <Navbar lang={lang} setLang={setLang} />
       <main>
         <Hero lang={lang} />

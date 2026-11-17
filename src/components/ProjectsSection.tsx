@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { FolderGit2, ExternalLink, ArrowRight, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, ArrowRight, Layers, Sparkles, Activity, ShieldAlert, Cpu } from 'lucide-react';
 import { PROJECTS, Project } from '../data/portfolioData';
 import { ProjectModal } from './ProjectModal';
 
@@ -10,198 +11,188 @@ interface ProjectsSectionProps {
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
   const [filter, setFilter] = useState<'all' | 'frontend' | 'ai' | 'competition'>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
 
   const filteredProjects = PROJECTS.filter((p) => {
     if (filter === 'all') return true;
     if (filter === 'frontend') return p.category === 'frontend' || p.category === 'featured';
     if (filter === 'ai') return p.category === 'ai' || p.category === 'featured';
-    if (filter === 'competition') return p.category === 'competition' || p.badge?.includes('BytesFest') || p.badge?.includes('INOVBOYO');
+    if (filter === 'competition') return p.category === 'competition' || p.badge?.includes('BytesFest') || p.badge?.includes('INOVBOYO') || p.badge?.includes('TIC');
     return true;
   });
 
-  // Scroll reveal for section
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { section.classList.add('revealed'); observer.unobserve(section); } },
-      { threshold: 0.05 }
-    );
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
-
-  // Staggered card reveal
-  useEffect(() => {
-    const cards = gridRef.current?.querySelectorAll('.project-card');
-    if (!cards) return;
-    const observers: IntersectionObserver[] = [];
-    cards.forEach((card, i) => {
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => card.classList.add('card-revealed'), i * 80);
-            obs.unobserve(card);
-          }
-        },
-        { threshold: 0.1 }
-      );
-      obs.observe(card);
-      observers.push(obs);
-    });
-    return () => observers.forEach((o) => o.disconnect());
-  }, [filteredProjects]);
-
   const categories = [
-    { id: 'all', label: lang === 'en' ? 'All Projects' : 'Semua Proyek', icon: '⚡' },
-    { id: 'frontend', label: lang === 'en' ? 'Front-End & Full Stack' : 'Front-End & Web', icon: '🎨' },
-    { id: 'ai', label: lang === 'en' ? 'AI & Machine Learning' : 'AI & Deep Learning', icon: '🤖' },
-    { id: 'competition', label: lang === 'en' ? 'Award Winners' : 'Kompetisi & Penghargaan', icon: '🏆' },
+    { id: 'all', label: lang === 'en' ? 'All Works' : 'Semua Proyek', count: PROJECTS.length },
+    { id: 'frontend', label: 'Front-End / Web', count: 3 },
+    { id: 'ai', label: 'AI & LLM Platforms', count: 3 },
+    { id: 'competition', label: lang === 'en' ? 'Award Champions' : 'Penghargaan', count: 3 },
   ];
 
-  const badgeColorMap: Record<string, string> = {
-    cyan: 'bg-cyan-500/10 text-cyan-300 border-cyan-500/30',
-    emerald: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
-    amber: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
-    purple: 'bg-purple-500/10 text-purple-300 border-purple-500/30',
-  };
-
   return (
-    <section
-      id="projects"
-      ref={sectionRef as React.RefObject<HTMLElement>}
-      className="py-24 relative bg-[#07090e] section-reveal"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+    <section id="projects" className="py-24 lg:py-32 border-t border-neutral-800/80 bg-neutral-950 relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
-            <FolderGit2 className="w-3.5 h-3.5" />
-            <span>{lang === 'en' ? 'Portfolio Showcase' : 'Karya & Proyek'}</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            {lang === 'en' ? 'Featured Software & AI Builds' : 'Proyek Perangkat Lunak & AI Unggulan'}
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
-            {lang === 'en'
-              ? 'Real-world capstone platforms, cultural WebGL initiatives, and award-winning AI innovations.'
-              : 'Platform capstone industri, situs dokumenter WebGL, dan inovasi AI peraih penghargaan.'}
-          </p>
-        </div>
-
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setFilter(cat.id as typeof filter)}
-              className={`filter-btn flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                filter === cat.id
-                  ? 'bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30 scale-105'
-                  : 'bg-slate-900/80 text-slate-400 border border-slate-800 hover:text-white hover:border-slate-600 hover:bg-slate-800/80 hover:scale-105'
-              }`}
-            >
-              <span>{cat.icon}</span>
-              <span>{cat.label}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Project Grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredProjects.map((project, idx) => (
-            <div
-              key={project.id}
-              className={`project-card glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col justify-between space-y-6 relative overflow-hidden group cursor-pointer project-card-tilt ${
-                idx === filteredProjects.length - 1 && filteredProjects.length % 2 !== 0
-                  ? 'md:col-span-2 md:w-[calc(50%-1rem)] md:mx-auto'
-                  : ''
-              }`}
-              onClick={() => setSelectedProject(project)}
-            >
-              {/* Hover glow overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 via-indigo-500/0 to-purple-500/0 group-hover:from-cyan-500/5 group-hover:via-indigo-500/5 group-hover:to-purple-500/5 transition-all duration-500 pointer-events-none rounded-3xl"></div>
-
-              {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-cyan-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-              <div className="space-y-4 relative z-10">
-                {/* Badge & Period */}
-                <div className="flex items-center justify-between gap-2">
-                  {project.badge ? (
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold border ${badgeColorMap[project.badgeColor || 'cyan'] || badgeColorMap.cyan}`}>
-                      {project.badge}
-                    </span>
-                  ) : (
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 text-slate-400">
-                      {project.period}
-                    </span>
-                  )}
-                  <span className="text-xs text-slate-400 font-mono">{project.period}</span>
-                </div>
-
-                {/* Title */}
-                <div>
-                  <h3 className="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-200 flex items-center justify-between">
-                    <span>{project.title}</span>
-                    <ArrowRight className="w-5 h-5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200 text-cyan-400 flex-shrink-0" />
-                  </h3>
-                  <p className="text-slate-400 text-xs font-semibold mt-1">{project.subtitle}</p>
-                </div>
-
-                {/* Summary */}
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed line-clamp-3">
-                  {project.summary[lang]}
-                </p>
-              </div>
-
-              {/* Tech & Links */}
-              <div className="space-y-4 pt-4 border-t border-slate-800/80 relative z-10">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tech.slice(0, 5).map((t) => (
-                    <span
-                      key={t}
-                      className="px-2.5 py-0.5 rounded-md bg-slate-900 text-slate-300 text-[11px] font-medium border border-slate-800 group-hover:border-slate-700 transition-colors duration-200"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                  {project.tech.length > 5 && (
-                    <span className="px-2 py-0.5 rounded-md bg-slate-800 text-slate-400 text-[11px]">
-                      +{project.tech.length - 5}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between pt-2 text-xs font-semibold">
-                  <span className="text-cyan-400 flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3" />
-                    {lang === 'en' ? 'Click for Full Breakdown' : 'Klik untuk Detail Lengkap'}
-                  </span>
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 hover:underline transition-colors"
-                    >
-                      <span>Live App</span>
-                      <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
-                </div>
-              </div>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+          <div className="space-y-3 max-w-2xl">
+            <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
+              <span className="w-2 h-2 rounded-full bg-cyan-400" />
+              <span>02 // SELECTED WORKS & SYSTEMS</span>
             </div>
-          ))}
+            <h2 className="text-display text-4xl sm:text-5xl text-white">
+              {lang === 'en' ? 'Crafted projects & platforms' : 'Karya & Proyek Terpilih'}
+            </h2>
+            <p className="text-base text-neutral-400 leading-relaxed">
+              {lang === 'en'
+                ? 'From enterprise legal AI suites at PLN Group to national award-winning web platforms.'
+                : 'Dari platform AI hukum enterprise PLN Group hingga aplikasi web peraih juara nasional.'}
+            </p>
+          </div>
+
+          {/* Filter Pills with animated layoutId */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-neutral-900 border border-neutral-800">
+            {categories.map((cat) => {
+              const isActive = filter === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setFilter(cat.id as typeof filter)}
+                  className={`relative px-3.5 py-1.5 rounded-lg text-xs font-mono transition-colors cursor-pointer ${
+                    isActive ? 'text-neutral-950 font-bold' : 'text-neutral-400 hover:text-white'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="project-filter-pill"
+                      className="absolute inset-0 bg-cyan-400 rounded-lg shadow-sm"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{cat.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Featured Projects Grid */}
+        <div className="space-y-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, idx) => {
+              const isFlagship = idx === 0 || idx === 1;
+
+              return (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.5, delay: idx * 0.06, ease: [0.22, 1, 0.36, 1] as const }}
+                  key={project.id}
+                  onClick={() => setSelectedProject(project)}
+                  className={`group relative rounded-2xl bg-neutral-900/60 border border-neutral-800 hover:border-neutral-700 p-6 sm:p-8 transition-all duration-300 cursor-pointer overflow-hidden ${
+                    isFlagship ? 'lg:p-10' : ''
+                  }`}
+                >
+                  {/* Subtle hover gradient highlight */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 via-cyan-500/[0.02] to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
+                    
+                    {/* Project Information */}
+                    <div className="lg:col-span-7 space-y-4">
+                      {/* Meta header */}
+                      <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
+                        <span className="text-cyan-400 font-semibold">
+                          INDEX // 0{idx + 1}
+                        </span>
+                        {project.badge && (
+                          <span className="px-2.5 py-0.5 rounded-md bg-neutral-800 text-neutral-300 border border-neutral-700/80">
+                            {project.badge}
+                          </span>
+                        )}
+                        <span className="text-neutral-500 tabular-nums">{project.period}</span>
+                      </div>
+
+                      {/* Title & Subtitle */}
+                      <div>
+                        <h3 className="text-2xl sm:text-3xl font-bold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-3">
+                          <span>{project.title}</span>
+                          <ArrowRight className="w-5 h-5 text-neutral-500 group-hover:text-cyan-400 group-hover:translate-x-1.5 transition-all" />
+                        </h3>
+                        <p className="text-sm font-mono text-neutral-400 mt-1">{project.subtitle}</p>
+                      </div>
+
+                      {/* Summary */}
+                      <p className="text-sm sm:text-base text-neutral-300 leading-relaxed font-normal">
+                        {project.summary[lang]}
+                      </p>
+
+                      {/* Role & Metrics */}
+                      <div className="flex flex-wrap items-center gap-4 text-xs font-mono pt-2">
+                        <div className="text-neutral-400">
+                          <span className="text-neutral-500 uppercase">ROLE: </span>
+                          <span className="text-neutral-200">{project.role}</span>
+                        </div>
+                        {project.metrics && (
+                          <div className="text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/20">
+                            ✓ {project.metrics}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Technical Stack & Action Column */}
+                    <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-6 pt-4 lg:pt-0 lg:pl-6 lg:border-l lg:border-neutral-800">
+                      
+                      <div className="space-y-3">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-neutral-500 block">
+                          SYSTEM ARCHITECTURE & TOOLS
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.tech.map((t) => (
+                            <span
+                              key={t}
+                              className="px-2.5 py-1 rounded-md text-xs font-mono bg-neutral-950 border border-neutral-800 text-neutral-300 group-hover:border-neutral-700 transition-colors"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Links & Details CTA */}
+                      <div className="flex items-center justify-between pt-4 border-t border-neutral-800/80 text-xs">
+                        <span className="text-cyan-400 font-mono flex items-center gap-1.5 group-hover:underline">
+                          <span>FULL ARCHITECTURE</span>
+                          <span>→</span>
+                        </span>
+
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-200 hover:text-white font-mono transition-colors"
+                          >
+                            <span>LIVE APP</span>
+                            <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+                          </a>
+                        )}
+                      </div>
+
+                    </div>
+
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
 
       </div>
 
-      {/* Modal */}
+      {/* Project Modal with complete details */}
       <ProjectModal
         project={selectedProject}
         isOpen={!!selectedProject}

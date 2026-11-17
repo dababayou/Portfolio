@@ -2,384 +2,83 @@
 
 @layer base {
   :root {
-    --bg-main: #07090e;
-    --bg-card: rgba(15, 23, 42, 0.7);
-    --border-glow: rgba(56, 189, 248, 0.2);
+    --color-bg: oklch(0.12 0.006 260);
+    --color-surface: oklch(0.16 0.008 260);
+    --color-surface-raised: oklch(0.20 0.012 260);
+    --color-surface-hover: oklch(0.23 0.015 260);
+    --color-border: oklch(0.28 0.01 260);
+    --color-border-subtle: oklch(0.22 0.008 260);
+    --color-text: oklch(0.95 0.005 260);
+    --color-text-secondary: oklch(0.72 0.012 260);
+    --color-text-muted: oklch(0.52 0.01 260);
+    
+    /* Signature Accent: Vibrant Electric Cyan-Cobalt */
+    --color-accent: oklch(0.75 0.16 220);
+    --color-accent-hover: oklch(0.82 0.15 220);
+    --color-accent-subtle: oklch(0.75 0.16 220 / 0.12);
+    --color-accent-glow: oklch(0.75 0.16 220 / 0.25);
   }
 
   body {
-    background-color: #07090e;
-    color: #f1f5f9;
+    background-color: var(--color-bg);
+    color: var(--color-text);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
+  /* Display & Monospace Typography */
+  .font-display {
+    font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   }
 
-  code, pre {
-    font-family: 'Fira Code', monospace;
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-feature-settings: 'zero', 'ss01', 'ss02';
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-family: 'Instrument Serif', Georgia, serif;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  .text-mono-tag {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Subtle technical background grid */
+  .bg-tech-grid {
+    background-size: 48px 48px;
+    background-image: 
+      linear-gradient(to right, oklch(1 0 0 / 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(1 0 0 / 0.025) 1px, transparent 1px);
+  }
+
+  /* Fine dot matrix background */
+  .bg-dot-matrix {
+    background-image: radial-gradient(oklch(1 0 0 / 0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Subtle card gradient highlight */
+  .card-highlight {
+    background: linear-gradient(135deg, oklch(0.20 0.012 260) 0%, oklch(0.15 0.007 260) 100%);
+    border: 1px solid var(--color-border-subtle);
   }
 }
 
 /* =====================
-   Glassmorphism
+   Scrollbar
    ===================== */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-panel-hover:hover {
-  background: rgba(30, 41, 59, 0.85);
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.15);
-  transform: translateY(-3px);
-}
-
-.glass-button {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
-}
-
-.glass-button:hover {
-  background: rgba(51, 65, 85, 0.9);
-  border-color: rgba(56, 189, 248, 0.4);
-}
-
-/* =====================
-   Text Gradients
-   ===================== */
-.text-gradient-cyan {
-  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-emerald {
-  background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-amber {
-  background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* =====================
-   Background
-   ===================== */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-}
-
-.glow-orb-1 {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(0, 0, 0, 0) 70%);
-  top: -150px;
-  left: -150px;
-  pointer-events: none;
-  border-radius: 50%;
-  filter: blur(50px);
-  animation: orb-drift 12s ease-in-out infinite alternate;
-}
-
-.glow-orb-2 {
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(147, 51, 234, 0.14) 0%, rgba(0, 0, 0, 0) 70%);
-  top: 400px;
-  right: -250px;
-  pointer-events: none;
-  border-radius: 50%;
-  filter: blur(60px);
-  animation: orb-drift 15s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes orb-drift {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(40px, 30px) scale(1.08); }
-}
-
-/* =====================
-   Floating Particles
-   ===================== */
-.hero-particle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(56, 189, 248, 0.6);
-  animation: particle-float linear infinite;
-  pointer-events: none;
-  filter: blur(0.5px);
-}
-
-@keyframes particle-float {
-  0%   { transform: translateY(0px) scale(1); opacity: 0; }
-  10%  { opacity: 0.6; }
-  90%  { opacity: 0.3; }
-  100% { transform: translateY(-80px) scale(0.5); opacity: 0; }
-}
-
-/* =====================
-   Hero Entrance Animations
-   ===================== */
-.hero-left-enter {
-  animation: slide-in-left 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.hero-right-enter {
-  animation: slide-in-right 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
-}
-
-.hero-badge-enter {
-  animation: fade-in-down 0.6s ease-out 0.1s both;
-}
-
-@keyframes slide-in-left {
-  from { opacity: 0; transform: translateX(-40px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slide-in-right {
-  from { opacity: 0; transform: translateX(40px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fade-in-down {
-  from { opacity: 0; transform: translateY(-12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* =====================
-   Typewriter
-   ===================== */
-.typewriter-text {
-  display: inline-flex;
-  align-items: center;
-}
-
-.typewriter-cursor {
-  display: inline-block;
-  margin-left: 2px;
-  color: #38bdf8;
-  animation: cursor-blink 1s step-end infinite;
-  font-weight: 100;
-}
-
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-
-/* =====================
-   Stat Cards
-   ===================== */
-.stat-card {
-  animation: fade-scale-in 0.5s ease-out both;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.stat-card:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 8px 24px -8px rgba(56, 189, 248, 0.2);
-}
-
-@keyframes fade-scale-in {
-  from { opacity: 0; transform: scale(0.92) translateY(10px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* =====================
-   Code window lines
-   ===================== */
-.code-line {
-  animation: code-type-in 0.4s ease-out both;
-}
-
-@keyframes code-type-in {
-  from { opacity: 0; transform: translateX(-8px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-/* Slow spin for sparkles icon */
-.animate-spin-slow {
-  animation: spin 6s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-/* Slow pulse */
-.animate-pulse-slow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.3; }
-  50%       { opacity: 0.6; }
-}
-
-/* =====================
-   Status blink dot
-   ===================== */
-.status-blink::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #34d399;
-  margin-right: 6px;
-  animation: status-ping 1.5s ease-in-out infinite;
-  vertical-align: middle;
-}
-
-@keyframes status-ping {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(1.5); }
-}
-
-/* =====================
-   Badge float animations
-   ===================== */
-.badge-float {
-  animation: badge-float-anim 4s ease-in-out infinite;
-}
-
-.badge-float-reverse {
-  animation: badge-float-anim 4s ease-in-out 2s infinite;
-}
-
-@keyframes badge-float-anim {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-6px) rotate(1deg); }
-}
-
-/* =====================
-   Marquee Ribbon
-   ===================== */
-.marquee-container {
-  width: 100%;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-}
-
-.marquee-track {
-  display: flex;
-  gap: 0.75rem;
-  width: max-content;
-  animation: marquee-scroll 28s linear infinite;
-}
-
-.marquee-container:hover .marquee-track {
-  animation-play-state: paused;
-}
-
-.marquee-pill {
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  cursor: default;
-}
-
-.marquee-pill:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
-}
-
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* =====================
-   Section Scroll Reveal
-   ===================== */
-.section-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
-.section-reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =====================
-   Project Cards
-   ===================== */
-.project-card {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.5s ease, transform 0.5s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card.card-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.project-card:hover {
-  background: rgba(30, 41, 59, 0.85);
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 16px 40px -12px rgba(56, 189, 248, 0.18);
-  transform: translateY(-5px);
-}
-
-.project-card.card-revealed:hover {
-  transform: translateY(-5px);
-}
-
-/* =====================
-   Filter Buttons
-   ===================== */
-.filter-btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.filter-btn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(56, 189, 248, 0.08);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.filter-btn:hover::after {
-  opacity: 1;
-}
-
-/* =====================
-   Custom Scrollbar
-   ===================== */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #07090e; }
-::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: oklch(0.28 0.01 260); border-radius: 2.5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
 
 /* =====================
    Smooth scroll
@@ -389,42 +88,12 @@ html {
 }
 
 /* =====================
-   Button active states
+   Reduced Motion
    ===================== */
-.btn-primary {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s ease, height 0.4s ease;
-}
-
-.btn-primary:active::before {
-  width: 200px;
-  height: 200px;
-}
-
-/* =====================
-   Social link hover
-   ===================== */
-.social-link {
-  transition: all 0.2s ease;
-}
-
-/* =====================
-   Selection color
-   ===================== */
-::selection {
-  background: rgba(56, 189, 248, 0.3);
-  color: white;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

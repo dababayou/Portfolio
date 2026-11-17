@@ -1,112 +1,77 @@
-import React, { useEffect, useRef } from 'react';
-import { Cpu } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 
 interface SkillsProps {
   lang: 'en' | 'id';
 }
 
-const levelColor: Record<string, string> = {
-  Expert: 'text-cyan-400',
-  Advanced: 'text-indigo-400',
-  Intermediate: 'text-purple-400',
-};
-
-const levelBg: Record<string, string> = {
-  Expert: 'bg-cyan-500/10 border-cyan-500/20',
-  Advanced: 'bg-indigo-500/10 border-indigo-500/20',
-  Intermediate: 'bg-purple-500/10 border-purple-500/20',
+const levelBadge: Record<string, { label: string; color: string }> = {
+  Expert: { label: 'EXPERT', color: 'text-cyan-400 border-cyan-400/30 bg-cyan-400/10' },
+  Advanced: { label: 'ADVANCED', color: 'text-blue-400 border-blue-400/30 bg-blue-400/10' },
+  Intermediate: { label: 'PROFICIENT', color: 'text-neutral-300 border-neutral-700 bg-neutral-800' },
 };
 
 export const SkillsSection: React.FC<SkillsProps> = ({ lang }) => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { el.classList.add('revealed'); observer.unobserve(el); } },
-      { threshold: 0.05 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  // Stagger reveal skill cards
-  useEffect(() => {
-    const cards = gridRef.current?.querySelectorAll('.skill-category-card');
-    if (!cards) return;
-    const observers: IntersectionObserver[] = [];
-    cards.forEach((card, i) => {
-      const obs = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => card.classList.add('card-revealed'), i * 100);
-          obs.unobserve(card);
-        }
-      }, { threshold: 0.1 });
-      obs.observe(card);
-      observers.push(obs);
-    });
-    return () => observers.forEach(o => o.disconnect());
-  }, []);
-
   return (
-    <section id="skills" ref={sectionRef} className="py-20 relative bg-[#07090e] section-reveal">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>{lang === 'en' ? 'Technical Proficiency' : 'Matriks Keahlian'}</span>
+    <section id="skills" className="py-24 lg:py-32 border-t border-neutral-800/80 bg-neutral-950 relative">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        
+        {/* Header */}
+        <div className="max-w-2xl mb-16 space-y-3">
+          <div className="flex items-center gap-2 text-xs font-mono text-cyan-400">
+            <span className="w-2 h-2 rounded-full bg-cyan-400" />
+            <span>04 // TECHNICAL SPECIFICATION</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            {lang === 'en' ? 'Skills & Competencies' : 'Keahlian & Kemampuan Teknis'}
+          <h2 className="text-display text-4xl sm:text-5xl text-white">
+            {lang === 'en' ? 'Core competencies & tooling' : 'Keahlian & Penguasaan Teknologi'}
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
+          <p className="text-base text-neutral-400 leading-relaxed">
             {lang === 'en'
-              ? 'Comprehensive toolkit spanning modern web frameworks, AI models, backend tools, and agile workflows.'
-              : 'Perangkat teknologi lengkap mencakup framework web modern, model AI, perangkat backend, dan alur kerja agile.'}
+              ? 'Technologies and frameworks tested across production enterprise software and research pipelines.'
+              : 'Perangkat dan kerangka kerja teruji pada aplikasi produksi enterprise dan riset medis.'}
           </p>
         </div>
 
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* 4 Category Matrix */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {SKILL_CATEGORIES.map((cat, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="skill-category-card project-card glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 hover:-translate-y-1"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="rounded-2xl bg-neutral-900/60 border border-neutral-800 p-6 sm:p-8 space-y-5 hover:border-neutral-700 transition-colors"
             >
-              <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-                <span className="w-9 h-9 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg font-black border border-cyan-500/20">
-                  {idx + 1}
+              <div className="flex items-center justify-between pb-4 border-b border-neutral-800">
+                <h3 className="text-lg font-bold text-white tracking-tight">
+                  {cat.title[lang]}
+                </h3>
+                <span className="font-mono text-xs text-cyan-400/90 font-semibold">
+                  INDEX // 0{idx + 1}
                 </span>
-                <h3 className="text-xl font-bold text-white">{cat.title[lang]}</h3>
               </div>
 
-              <div className="grid grid-cols-2 gap-2.5">
-                {cat.skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="group/skill p-3 rounded-2xl bg-slate-900/80 border border-slate-800/80 flex items-center justify-between hover:bg-slate-800/90 hover:border-slate-700 transition-all duration-200 hover:-translate-y-0.5 cursor-default"
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <span className="text-lg group-hover/skill:scale-125 transition-transform duration-200 inline-block">
-                        {skill.icon}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {cat.skills.map((skill) => {
+                  const badge = levelBadge[skill.level] || levelBadge.Intermediate;
+                  return (
+                    <div
+                      key={skill.name}
+                      className="p-3 rounded-xl bg-neutral-950 border border-neutral-850 flex items-center justify-between hover:border-neutral-700 hover:bg-neutral-900/80 transition-colors group cursor-default"
+                    >
+                      <span className="text-sm font-medium text-neutral-200 group-hover:text-white transition-colors">
+                        {skill.name}
                       </span>
-                      <div>
-                        <div className="text-xs sm:text-sm font-bold text-slate-200">{skill.name}</div>
-                        <div className={`text-[10px] font-semibold ${levelColor[skill.level] || 'text-slate-400'}`}>
-                          {skill.level}
-                        </div>
-                      </div>
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${badge.color}`}>
+                        {badge.label}
+                      </span>
                     </div>
-                    <span className={`text-[9px] px-1.5 py-0.5 rounded-full border font-bold ${levelBg[skill.level] || 'bg-slate-800 border-slate-700'} ${levelColor[skill.level] || 'text-slate-400'} opacity-0 group-hover/skill:opacity-100 transition-opacity`}>
-                      {skill.level.charAt(0)}
-                    </span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
